@@ -1,0 +1,49 @@
+What is a hard link?
+A hard link is a link that connects the actual name of the directory to the actual data.
+
+What is a symbolic link?
+A file that references another file within it
+
+List three characteristics of a hard link.
+	Every directory has at least one hard link
+	If there is more than one hard link it creates an alias effect and you can access the same file through 2 different names
+	It is the association between the actual data and the name
+
+List three characteristics of a symbolic link
+	Also known as a soft link	
+Is actually a file that holds the name of the file or the path
+	It is shortcut like a bookmark on your web browser
+
+What does the history command do?
+	The history command shows all the commands you have ever ran.
+
+List the function of the tail command .
+	The function of the tail command is to get the last 10 lines or how many are specified. 
+
+List the function of the head command.
+	The function of the head command is to get the first 10 lines or how many are specified. 
+
+How would you find the first 14 lines of a file?
+	head -n 5 myfile.txt
+
+What is the difference between 'searching' and 'sorting'?
+	Searching finds whatever element is to be found while sorting usually sorts       every single element
+
+What is a process?
+	A process is a task that the computer is running at any given time
+
+How do you find running processes on the system?
+	ps - aux
+
+How would you kill a running process with the PID of 1325 ?
+kill -9 1325
+
+ What does it mean to 'compress' data ?
+It means to make the file smaller by reencoding the file
+
+What is the difference between copy(cp) and move(mv) ?
+	Cp will keep the old files while mv will delete them 
+
+What does it mean to 'archive'  a file or archive data ?
+	It means that you turn multiple files into one
+	
