@@ -1,0 +1,158 @@
+Number 1
+[cs45aa15@mc-redhat01 ~]$ cp /tmp/week-5/*  $HOME/homework/week-5
+[cs45aa15@mc-redhat01 week-5]$ ls
+mnm     names_file  regtxt   regtxt2
+months  numbers     regtxt1  tester1
+
+Number 2
+[cs45aa15@mc-redhat01 week-5]$ sort months
+Apr
+Aug
+Dec
+Feb
+Jan
+Jul
+Jun
+Mar
+May
+Nov
+Oct
+Sep
+
+Number 3
+[cs45aa15@mc-redhat01 week-5]$ touch monbrs
+[cs45aa15@mc-redhat01 week-5]$ sort -m months numbers > monbrs
+[cs45aa15@mc-redhat01 week-5]$ cat monbrs
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+1
+5
+15
+25
+35
+Jan
+Feb
+Mar
+Apr
+May
+Jun
+Jul
+Aug
+Sep
+Oct
+Nov
+Dec
+
+Number 4
+[cs45aa15@mc-redhat01 week-5]$ egrep ^[r]{1} /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+rtkit:x:172:172:RealtimeKit:/proc:/sbin/nologin
+radvd:x:75:75:radvd user:/:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+
+Number 5
+[cs45aa15@mc-redhat01 week-5]$ egrep -c ^[r]{1} /etc/passwd
+5
+
+Number 6
+[cs45aa15@mc-redhat01 week-5]$ egrep -v 'cs45' /etc/passwd > nocs45
+[cs45aa15@mc-redhat01 week-5]$ grep -c 'cs45' nocs45
+0
+
+Number 7 
+[cs45aa15@mc-redhat01 week-5]$ egrep 'y' months
+May
+
+Number 8 - 
+[cs45aa15@mc-redhat01 week-5]$ egrep -c 'root|ly|body|ROOT|LY|BODY' rootlybody
+6
+[cs45aa15@mc-redhat01 week-5]$ cat rootlybody
+root
+ly
+body
+ROOT
+LY
+AARFFDDG
+BODY
+FDSF
+fdfasfd
+
+Number 9
+[cs45aa15@mc-redhat01 week-5]$ cat -TE regtxt
+I am line one$
+2 I am$
+100 is cost of ticket$
+  two spaces in begin$
+two spaces at end  $
+       $
+line with 5 spaces above$
+jan$
+feb$
+408-334-9808$
+446-35-1088$
+aa$
+aaaaaAA$
+a$
+XaaaA $
+55555566666$
+55555555  $
+55$
+10.2.3.4$
+101.20.5.6$
+9.2.3.4$
+192.16.2.244$
+
+Number 10 
+[cs45aa15@mc-redhat01 week-5]$ egrep '[0-9]{3}-[0-9]{3}-[0-9]{4}' regtxt
+408-334-9808
+
+Number 11 
+[cs45aa15@mc-redhat01 week-5]$ grep '^a.*A$' regtxt
+aaaaaAA
+
+Number 12
+[cs45aa15@mc-redhat01 week-5]$ egrep '[0-9]{3}-[0-9]{2}-[0-9]{4}' regtxt2 > ssn
+[cs45aa15@mc-redhat01 week-5]$ sed -ie 's/[0-9]{4}/****/g' ssn 
+[cs45aa15@mc-redhat01 week-5]$ cat ssn
+446-35-****
+346-35-****
+
+
+Number 13 
+[cs45aa15@mc-redhat01 week-5]$ sed -ie 's/100/(100)/g' regtxt1
+[cs45aa15@mc-redhat01 week-5]$ cat regtxt1
+I am line one
+2 I am
+(100) is cost of ticket
+  two spaces in begin
+two spaces at end  
+       
+line with 5 spaces above
+jan
+feb
+
+Number 14
+[cs45aa15@mc-redhat01 week-5]$  egrep '[0-9]{3}-[0-9]{3}-[0-9]{4}' regtxt2
+408-334-9808
+415-934-6808
+510-534-9808
+
+Number 15 
+[cs45aa15@mc-redhat01 week-5]$ rm newnums
+[cs45aa15@mc-redhat01 week-5]$  egrep '[0-9]{3}-[0-9]{3}-[0-9]{4}' regtxt2 > newnums
+[cs45aa15@mc-redhat01 week-5]$ sed -E 's/([0-9]{3})-([0-9]{3})-([0-9]{4})/\3-\2-\3/' newnums
+9808-334-9808
+6808-934-6808
+9808-534-9808
+
+
+
