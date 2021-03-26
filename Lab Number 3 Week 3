@@ -1,0 +1,255 @@
+Number 1 -View your umask 
+[cs45aa15@mc-redhat01 ~]$ umask
+0002
+
+Number 2 - Write the values and describe what you see.
+> I see 002 which means that my User/Group ID is less than 199
+
+Number 3- Go into your ~/homework/week-3/lec-3 directory.
+[cs45aa15@mc-redhat01 ~]$ cd homework
+[cs45aa15@mc-redhat01 homework]$ cd week-3
+[cs45aa15@mc-redhat01 week-3]$ cd lec-3
+[cs45aa15@mc-redhat01 lec-3]$ 
+
+Number 4 - Verify that you are in your lec-3 directory before you execute the following commands. Record the output of ls -ld dirx.
+[cs45aa15@mc-redhat01 lec-3]$ mkdir dirx
+[cs45aa15@mc-redhat01 lec-3]$ ls -ld dirrx
+ls: cannot access dirrx: No such file or directory
+[cs45aa15@mc-redhat01 lec-3]$ ls -ld dirx
+drwxrwxr-x. 2 cs45aa15 cs45aa15 6 Feb 20 20:57 dirx
+
+Number 5 - Create an empty file called xfile
+[cs45aa15@mc-redhat01 lec-3]$ touch xfile
+[cs45aa15@mc-redhat01 lec-3]$ ls -l xfile
+-rw-rw-r--. 1 cs45aa15 cs45aa15 0 Feb 20 20:59 xfile
+
+> cs45aa15 owns xfile
+> the size of xfile is 0
+> -rw-rw-r--
+> Read and write
+> Read and write
+> Just read
+
+Number 6 - Change your umask to 033
+[cs45aa15@mc-redhat01 lec-3]$ umask 033
+[cs45aa15@mc-redhat01 lec-3]$ umask
+0033
+
+
+Number 7 - Create another file called zfile
+[cs45aa15@mc-redhat01 lec-3]$ touch zfile
+[cs45aa15@mc-redhat01 lec-3]$ ls -l zfile
+-rw-r--r--. 1 cs45aa15 cs45aa15 0 Feb 20 21:04 zfile
+> -rw-r--r--
+> So only I can edit the file
+
+Number 8 - Create a directory called 'zdir'
+[cs45aa15@mc-redhat01 lec-3]$ mkdir zdir
+[cs45aa15@mc-redhat01 lec-3]$  ls -ld zdir
+drwxr--r--. 2 cs45aa15 cs45aa15 6 Feb 20 21:23 zdir
+> drwxr--r--
+> so i can read write and execute the entire file 
+> x is execute
+> w is write
+> r is read
+
+Number 9 - What groups does mr-tester belong to?
+[cs45aa15@mc-redhat01 lec-3]$  groups mr-tester
+mr-tester : mr-tester
+[cs45aa15@mc-redhat01 lec-3]$ grep mr-tester /etc/group
+mr-tester:x:1044:
+[cs45aa15@mc-redhat01 lec-3]$  id -a mr-tester
+uid=1042(mr-tester) gid=1044(mr-tester) groups=1044(mr-tester)
+
+Number 10 - newgrp
+[cs45aa15@mc-redhat01 ~]$ newgrp - cs45aa15
+[cs45aa15@mc-redhat01 ~]$ ps
+My own ps
+Mon Feb 22 23:55:14 EST 2021
+/usr/local/bin/ps
+[cs45aa15@mc-redhat01 ~]$ exit
+logout
+[cs45aa15@mc-redhat01 ~]$ ps
+My own ps
+Mon Feb 22 23:55:18 EST 2021
+/usr/local/bin/ps
+
+Number 11 - Use the chgrp command to assign your file to another group that you belong to.
+[cs45aa15@mc-redhat01 ~]$ touch gxfile
+[cs45aa15@mc-redhat01 ~]$ ls -l gxfile
+-rw-rw-r--. 1 cs45aa15 cs45aa15 0 Feb 22 23:56 gxfile
+> group cs45aa15
+[cs45aa15@mc-redhat01 ~]$  chgrp  wheel gxfile
+chgrp: changing group of ‘gxfile’: Operation not permitted
+> No I don’t have permissions
+
+Number 12 - Try to give your group ownership to cs45. 
+[cs45aa15@mc-redhat01 ~]$  touch mr-tfile
+[cs45aa15@mc-redhat01 ~]$ ls -l mr-tfile
+-rw-rw-r--. 1 cs45aa15 cs45aa15 0 Feb 23 00:05 mr-tfile
+
+
+[cs45aa15@mc-redhat01 ~]$  touch mr-tfile
+[cs45aa15@mc-redhat01 ~]$ ls -l mr-tfile
+-rw-rw-r--. 1 cs45aa15 cs45aa15 0 Feb 23 00:05 mr-tfile
+[cs45aa15@mc-redhat01 ~]$ chgrp cs45 mr-tfile
+chgrp: invalid group: ‘cs45’
+> Group doesn’t exist
+
+Number 13
+[cs45aa15@mc-redhat01 ~]$ test -f mr-tfile
+[cs45aa15@mc-redhat01 ~]$ echo$?
+bash: echo0: command not found...
+Similar command is: 'echo'
+[cs45aa15@mc-redhat01 ~]$ echo $?
+127
+
+> 127
+
+[cs45aa15@mc-redhat01 ~]$ mkdir mr-dir
+[cs45aa15@mc-redhat01 ~]$  ls -ld mr-dir
+drwxrwxr-x. 2 cs45aa15 cs45aa15 6 Feb 23 00:09 mr-dir
+[cs45aa15@mc-redhat01 ~]$  test -d mr-dir
+[cs45aa15@mc-redhat01 ~]$ echo $0
+-bash
+
+Number 14 - 
+[cs45aa15@mc-redhat01 ~]$  test 4 -lt 5
+[cs45aa15@mc-redhat01 ~]$ echo $?
+0
+[cs45aa15@mc-redhat01 ~]$ test 4 -lt 5 && echo "I got this!"
+-bash: !": event not found
+[cs45aa15@mc-redhat01 ~]$ test 2 -ne 3 && echo "Rock on"
+Rock on
+[cs45aa15@mc-redhat01 ~]$ test -d mr-dir  && echo "mr-dir is a directory"
+mr-dir is a directory
+
+Number 15
+[cs45aa15@mc-redhat01 ~]$  mkdir permtest
+[cs45aa15@mc-redhat01 ~]$  cd permtest
+[cs45aa15@mc-redhat01 permtest]$ 
+[cs45aa15@mc-redhat01 permtest]$ touch feedback1 feedback2 feedback3
+[cs45aa15@mc-redhat01 permtest]$  ls -lh
+total 0
+-rw-rw-r--. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback1
+-rw-rw-r--. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback2
+-rw-rw-r--. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback3
+
+ Number 16 -
+[cs45aa15@mc-redhat01 permtest]$ echo "I am : $0 "
+I am : -bash 
+[cs45aa15@mc-redhat01 permtest]$ echo "Practice harder!:)"
+-bash: ): unrecognized history modifier
+
+Number 17 - 
+[cs45aa15@mc-redhat01 permtest]$  chmod +x feedback1
+[cs45aa15@mc-redhat01 permtest]$ 
+[cs45aa15@mc-redhat01 permtest]$ ls -lh 
+total 0
+-rwxrwxr-x. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback1
+-rw-rw-r--. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback2
+-rw-rw-r--. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback3
+
+Number 18
+[cs45aa15@mc-redhat01 permtest]$ chmod g-w feedback2
+[cs45aa15@mc-redhat01 permtest]$ chmod o-r feedback2
+[cs45aa15@mc-redhat01 permtest]$ ls -lh 
+total 4.0K
+-rw-r--r--. 1 cs45aa07 cs45aa07 41 Feb 21 17:20 feedback
+-rwxrwxr-x. 1 cs45aa07 cs45aa07  0 Feb 21 17:15 feedback1
+-rw-r-----. 1 cs45aa07 cs45aa07  0 Feb 21 17:15 feedback2
+-rw-rw-r--. 1 cs45aa07 cs45aa07  0 Feb 21 17:15 feedback3
+ 
+Number 19
+[cs45aa15@mc-redhat01 permtest]$ chmod g-w feedback2
+[cs45aa15@mc-redhat01 permtest]$ chmod o-w feedback2
+[cs45aa15@mc-redhat01 permtest]$ ls -lh
+total 0
+-rwxrwxr-x. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback1
+-rw-r-----. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback2
+-rw-rw-r--. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback3
+
+Number 20
+[cs45aa15@mc-redhat01 permtest]$ chmod 754 feedback3
+[cs45aa15@mc-redhat01 permtest]$ ls -lh
+total 0
+-rwxrwxr-x. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback1
+-rw-r-----. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback2
+-rwxr-xr--. 1 cs45aa15 cs45aa15 0 Feb 23 00:26 feedback3
+
+ Number 21
+[cs45aa15@mc-redhat01 permtest]$ mkdir dir-tester
+
+Number 22
+[cs45aa15@mc-redhat01 permtest]$ cd dir-tester
+[cs45aa15@mc-redhat01 dir-tester]$ mkdir dir-test2
+
+Number 23
+[cs45aa15@mc-redhat01 dir-tester]$ mkdir tester-file1
+[cs45aa15@mc-redhat01 dir-tester]$ mkdir tester-file2
+[cs45aa15@mc-redhat01 dir-tester]$ mkdir tester-file3
+[cs45aa15@mc-redhat01 dir-tester]$ mkdir tester-file4
+[cs45aa15@mc-redhat01 dir-tester]$ ls
+dir-test2  tester-file1  tester-file2  tester-file3  tester-file4
+
+Number 24
+[cs45aa15@mc-redhat01 permtest]$  ls -lR dir-tester
+dir-tester:
+total 0
+drwxrwxr-x. 2 cs45aa15 cs45aa15 6 Feb 23 00:36 dir-test2
+drwxrwxr-x. 2 cs45aa15 cs45aa15 6 Feb 23 00:36 tester-file1
+drwxrwxr-x. 2 cs45aa15 cs45aa15 6 Feb 23 00:37 tester-file2
+drwxrwxr-x. 2 cs45aa15 cs45aa15 6 Feb 23 00:37 tester-file3
+drwxrwxr-x. 2 cs45aa15 cs45aa15 6 Feb 23 00:37 tester-file4
+
+dir-tester/dir-test2:
+total 0
+
+dir-tester/tester-file1:
+total 0
+
+dir-tester/tester-file2:
+total 0
+
+dir-tester/tester-file3:
+total 0
+
+dir-tester/tester-file4:
+total 0
+
+Number 25
+[cs45aa15@mc-redhat01 permtest]$ chmod -R 600 dir-tester
+chmod: cannot access ‘dir-tester/dir-test2’: Permission denied
+chmod: cannot access ‘dir-tester/tester-file1’: Permission denied
+chmod: cannot access ‘dir-tester/tester-file2’: Permission denied
+chmod: cannot access ‘dir-tester/tester-file3’: Permission denied
+chmod: cannot access ‘dir-tester/tester-file4’: Permission denied
+
+ 
+[cs45aa15@mc-redhat01 permtest]$ ls -lR
+.:
+total 0
+drw-------. 7 cs45aa15 cs45aa15 103 Feb 23 00:37 dir-tester
+-rwxrwxr-x. 1 cs45aa15 cs45aa15   0 Feb 23 00:26 feedback1
+-rw-r-----. 1 cs45aa15 cs45aa15   0 Feb 23 00:26 feedback2
+-rwxr-xr--. 1 cs45aa15 cs45aa15   0 Feb 23 00:26 feedback3
+
+./dir-tester:
+ls: cannot access ./dir-tester/dir-test2: Permission denied
+ls: cannot access ./dir-tester/tester-file1: Permission denied
+ls: cannot access ./dir-tester/tester-file2: Permission denied
+ls: cannot access ./dir-tester/tester-file3: Permission denied
+ls: cannot access ./dir-tester/tester-file4: Permission denied
+total 0
+d????????? ? ? ? ?            ? dir-test2
+d????????? ? ? ? ?            ? tester-file1
+d????????? ? ? ? ?            ? tester-file2
+d????????? ? ? ? ?            ? tester-file3
+d????????? ? ? ? ?            ? tester-file4
+ls: cannot open directory ./dir-tester/dir-test2: Permission denied
+ls: cannot open directory ./dir-tester/tester-file1: Permission denied
+ls: cannot open directory ./dir-tester/tester-file2: Permission denied
+ls: cannot open directory ./dir-tester/tester-file3: Permission denied
+ls: cannot open directory ./dir-tester/tester-file4: Permission denied
+
+
