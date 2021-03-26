@@ -1,0 +1,349 @@
+Number 1 - Navigating the File System
+[cs45aa15@mc-redhat01 /]$ cd /; ls -F;
+bin@   dev/  home/  lib64@  mnt/  proc/  run/   srv/  tmp/  var/
+boot/  etc/  lib@   media/  opt/  root/  sbin@  sys/  usr/
+
+[cs45aa15@mc-redhat01 /]$ cd /etc; ls -F
+abrt/                       fuse.conf                 mke2fs.conf        rsyncd.conf
+adjtime                     fwupd/                    modprobe.d/        rsyslog.conf
+aliases                     gconf/                    modules-load.d/    rsyslog.d/
+…
+
+Number 2 - Using the ‘ls’ command and the Pipe for interprocess communication
+​[cs45aa15@mc-redhat01 etc]$ ls -F | more
+abrt/
+adjtime
+aliases
+aliases.db
+alsa/
+alternatives/
+amanda/
+anacrontab
+asound.conf
+at.deny
+…
+
+
+Number 3 - ls -a
+[cs45aa15@mc-redhat01 etc]$  cd /var/log; ls -a
+.                  dmesg.old           ntpstats             spooler-20210207
+..                 firewalld           openlmi-install.log  spooler-20210214
+amanda             gdm                 pcp                  sssd
+anaconda           glusterfs           pki                  swtpm
+audit              grubby              pluto                tallylog
+boot.log           grubby_prune_debug  ppp                  tomcat
+boot.log-20210129  httpd               qemu-ga              tuned
+btmp               lastlog             rhsm                 vmware-network.1.log
+btmp-20210201      libvirt             sa                   vmware-network.log
+chrony             maillog             samba                vmware-vgauthsvc.log.0
+cron               maillog-20210129    secure               vmware-vmsvc.log
+cron-20210129      maillog-20210131    secure-20210129      wpa_supplicant.log
+cron-20210131      maillog-20210207    secure-20210131      wtmp
+cron-20210207      maillog-20210214    secure-20210207      Xorg.0.log
+cron-20210214      messages            secure-20210214      Xorg.0.log.old
+cups               messages-20210129   speech-dispatcher    Xorg.9.log
+custodia           messages-20210131   spooler              yum.log
+dirsrv             messages-20210207   spooler-20210129     yum.log-20210129
+dmesg              messages-20210214   spooler-20210131
+
+Number 4 - ls -l
+[cs45aa15@mc-redhat01 log]$ ls -al
+total 221220
+...
+[cs45aa15@mc-redhat01 log]$ ls -al |more
+total 236608
+...
+
+Number 5 - /usr/bin
+[cs45aa15@mc-redhat01 log]$ ls  /usr/sbin
+abrt-auto-reporting          grubby                      postmulti
+abrt-configuration           gssproxy                    postqueue
+abrtd                        halt                        postsuper
+abrt-dbus                    handle-sshpw                poweroff
+abrt-harvest-pstoreoops      hardlink                    powertop
+abrt-harvest-vmcore          htcacheclean                pppd
+abrt-install-ccpp-hook       httpd                       pppdump
+abrt-server                  hwclock                     pppoe-discovery
+…
+[cs45aa15@mc-redhat01 log]$  ls -F  /usr/sbin
+abrt-auto-reporting*          grubby*                      postmulti*
+abrt-configuration*           gssproxy*                    postqueue*
+abrtd*                        halt@                        postsuper*
+abrt-dbus*                    handle-sshpw*                poweroff@
+abrt-harvest-pstoreoops*      hardlink*                    powertop*
+abrt-harvest-vmcore*          htcacheclean*                pppd*
+abrt-install-ccpp-hook*       httpd*                       pppdump*
+abrt-server*                  hwclock*                     pppoe-discovery*
+
+> I see the files that are necessary for the operating system such as ipconfig and ifconfig
+
+Number 6 - .mydatafile
+[cs45aa15@mc-redhat01 ~]$ touch .mydatafile
+[cs45aa15@mc-redhat01 ~]$ ls -l
+total 4
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:39 1015
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:39 23:34:20
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:39 cs45aa15
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:40 [cs45aa15@mc-redhat01
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:39 cs45aa24
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:39 cs45aa26
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:39 cs45aa32
+drwxrwxr-x. 2 cs45aa15 cs45aa15  6 Feb  5 21:55 folder
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:39 id:
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:39 Last
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:39 ply
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb  5 21:50 popd
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb  5 21:50 return
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb  5 21:50 source
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 19 19:31 temp
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb  5 21:50 times
+-rw-rw-r--. 1 cs45aa15 cs45aa15 27 Feb  5 21:50 true
+-rw-rw-r--. 1 cs45aa15 cs45aa15  0 Feb 11 23:39 USER
+[cs45aa15@mc-redhat01 ~]$ ls -a
+.              .bash_logout   cs45aa15               folder       ply     temp
+..             .bash_profile  [cs45aa15@mc-redhat01  id:          popd    .temp
+1015           .bashrc        cs45aa24               Last         return  times
+23:34:20       .cache         cs45aa26               .mozilla     source  true
+.bash_history  .config        cs45aa32               .mydatafile  .ssh    USER
+[cs45aa15@mc-redhat01 ~]$  ls -al
+total 32
+drwx------.  7 cs45aa15 cs45aa15 4096 Feb 19 19:32 .
+drwxr-xr-x. 45 root     root     4096 Feb  6 13:56 ..
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:39 1015
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:39 23:34:20
+-rw-------.  1 cs45aa15 cs45aa15 8014 Feb 19 19:30 .bash_history
+-rw-r--r--.  1 cs45aa15 cs45aa15   18 Aug 21  2019 .bash_logout
+-rw-r--r--.  1 cs45aa15 cs45aa15  193 Aug 21  2019 .bash_profile
+-rw-r--r--.  1 cs45aa15 cs45aa15  231 Aug 21  2019 .bashrc
+drwxrwxr-x.  3 cs45aa15 cs45aa15   18 Feb  5 21:39 .cache
+drwxrwxr-x.  3 cs45aa15 cs45aa15   18 Feb  5 21:39 .config
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:39 cs45aa15
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:40 [cs45aa15@mc-redhat01
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:39 cs45aa24
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:39 cs45aa26
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:39 cs45aa32
+drwxrwxr-x.  2 cs45aa15 cs45aa15    6 Feb  5 21:55 folder
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:39 id:
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:39 Last
+drwxr-xr-x.  4 cs45aa15 cs45aa15   39 Sep  3 22:26 .mozilla
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 19 19:32 .mydatafile
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:39 ply
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb  5 21:50 popd
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb  5 21:50 return
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb  5 21:50 source
+drwx------.  2 cs45aa15 cs45aa15   25 Feb  6 14:25 .ssh
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 19 19:31 temp
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 19 19:31 .temp
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb  5 21:50 times
+-rw-rw-r--.  1 cs45aa15 cs45aa15   27 Feb  5 21:50 true
+-rw-rw-r--.  1 cs45aa15 cs45aa15    0 Feb 11 23:39 USER
+[cs45aa15@mc-redhat01 ~]$ pwd;  cal > .mydatafile
+/home/cs45aa15
+[cs45aa15@mc-redhat01 ~]$ cat .mydatafile
+    February 2021   
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28
+
+> cs45aa15 owns the file
+> The size of the file is 0
+
+Number 7 - Dot and DotDot
+[cs45aa15@mc-redhat01 ~]$ cd $HOME; pwd; ls -a
+/home/cs45aa15
+.              .bash_logout   cs45aa15               folder       ply     temp
+..             .bash_profile  [cs45aa15@mc-redhat01  id:          popd    .temp
+1015           .bashrc        cs45aa24               Last         return  times
+23:34:20       .cache         cs45aa26               .mozilla     source  true
+.bash_history  .config        cs45aa32               .mydatafile  .ssh    USER
+
+[cs45aa15@mc-redhat01 ~]$ cd ..
+[cs45aa15@mc-redhat01 home]$ 
+
+[cs45aa15@mc-redhat01 ~]$ pwd   /home
+/home/cs45aa15
+
+[cs45aa15@mc-redhat01 ~]$ pwd   /
+/home/cs45aa15
+
+Number 8 - cd -
+[cs45aa15@mc-redhat01 ~]$ cd -
+/home
+
+
+[cs45aa15@mc-redhat01 home]$ pwd
+/home
+
+Number 9 - Relative = Relative 
+[cs45aa15@mc-redhat01 home]$ cd /home/cs45aa15
+[cs45aa15@mc-redhat01 ~]$ pwd
+/home/cs45aa15
+
+[cs45aa15@mc-redhat01 ~]$  cd /var/log
+[cs45aa15@mc-redhat01 log]$ pwd
+/var/log
+
+[cs45aa15@mc-redhat01 log]$ cd ..
+[cs45aa15@mc-redhat01 var]$ pwd
+/var
+
+[cs45aa15@mc-redhat01 var]$ cd ~mr-tester
+[cs45aa15@mc-redhat01 mr-tester]$ pwd
+/home/mr-tester
+
+[cs45aa15@mc-redhat01 mr-tester]$ cd -
+/var
+[cs45aa15@mc-redhat01 var]$ pwd
+/var
+
+
+Number 10 - Making Directories
+[cs45aa15@mc-redhat01 ~]$  mkdir $HOME/globbers
+[cs45aa15@mc-redhat01 ~]$ ls -d $HOME/globbers
+/home/cs45aa15/globbers
+
+>Read Write and Execute
+
+Number 11 - touch
+[cs45aa15@mc-redhat01 globbers]$ touch filex filey filez file55 file60 file70 file100 file200  foo  fox
+
+
+Number 12 - List all files that starts with the letter ‘f’ follow by any two characters
+[cs45aa15@mc-redhat01 globbers]$ ls  f??
+foo  fox
+[cs45aa15@mc-redhat01 globbers]$  ls f*x
+filex  fox
+[cs45aa15@mc-redhat01 globbers]$ ls f*[2]*
+file200
+[cs45aa15@mc-redhat01 globbers]$ ls f*2*  ​    
+ls: cannot access ​: No such file or directory
+file200
+[cs45aa15@mc-redhat01 globbers]$ ls f*[2-9]
+file55
+[cs45aa15@mc-redhat01 globbers]$ ls f*[0-9][0-9]
+file100  file200  file55  file60  file70
+[cs45aa15@mc-redhat01 globbers]$ ls f*[0-9][0-9]*
+file100  file200  file55  file60  file70
+[cs45aa15@mc-redhat01 globbers]$ ls f[!i]*
+foo  fox
+
+Number 13 - touch
+[cs45aa15@mc-redhat01 globbers]$  touch file_one file_two
+
+Number 14 - ls -a
+[cs45aa15@mc-redhat01 globbers]$ ls -a
+.  ..  file100  file200  file55  file60  file70  file_one  file_two  filex  filey  filez  foo  fox
+
+Number 15 - cat
+[cs45aa15@mc-redhat01 ~]$ cat tester_file
+I am the first line in this file
+I am the second line in this file
+I am the third line in this file
+
+Number 16 - cat
+[cs45aa15@mc-redhat01 globbers]$ cat tester_file
+  I am the first line in this file 
+  I am the first line in this file 
+
+Number 17 - Nano Tester File
+[cs45aa15@mc-redhat01 ~]$ nano tester_file_2
+[cs45aa15@mc-redhat01 ~]$ cat tester_file_2
+I am first line in tester_file_2
+I am second line in tester_file_2
+
+Number 18 - vi tester-v
+[cs45aa15@mc-redhat01 ~]$ vi tester-v  ​​
+2 files to edit
+
+[cs45aa15@mc-redhat01 ~]$ cat tester_file
+I am the first line in this file
+I am the second line in this file
+I am the third line in this file
+
+Number 19 - dirx
+[cs45aa15@mc-redhat01 ~]$ mkdir /home/cs45aa15/dirx
+[cs45aa15@mc-redhat01 ~]$ cd $HOME/dirx
+[cs45aa15@mc-redhat01 dirx]$ 
+
+Number 20 - mkdir
+[cs45aa15@mc-redhat01 dirx]$ pwd
+/home/cs45aa15/dirx
+[cs45aa15@mc-redhat01 dirx]$ mkdir ../diry
+
+Number 21 - 
+[cs45aa15@mc-redhat01 diry]$ mkdir tmp
+[cs45aa15@mc-redhat01 diry]$ cd tmp
+[cs45aa15@mc-redhat01 tmp]$ mkdir ../../cs45aa15-tester
+
+Number 22 - mkdir
+[cs45aa15@mc-redhat01 ~]$ mkdir /tmp/hcampbell-tester2
+mkdir: cannot create directory ‘/tmp/hcampbell-tester2’: File exists
+
+Already created it on accident couldn’t find the command 
+
+Number 23 - mkdir
+[cs45aa15@mc-redhat01 tmp]$ cd hcampbell-tester
+-bash: cd: hcampbell-tester: No such file or directory
+[cs45aa15@mc-redhat01 tmp]$ mkdir hcampbell-tester
+[cs45aa15@mc-redhat01 tmp]$ cd hcampbell-tester
+[cs45aa15@mc-redhat01 hcampbell-tester]$ cd data-file
+-bash: cd: data-file: No such file or directory
+[cs45aa15@mc-redhat01 hcampbell-tester]$ mkdir data-file
+[cs45aa15@mc-redhat01 hcampbell-tester]$ cd data-file
+[cs45aa15@mc-redhat01 data-file]$ 
+
+
+Number 24 - mkdir
+[cs45aa15@mc-redhat01 data-file]$ mkdir /tmp/dirz/dirz
+mkdir: cannot create directory ‘/tmp/dirz/dirz’: File exists
+
+> It says the file doesn’t exist because I don’t have a dirz directory under tmp
+Number 25 - mkdir
+[cs45aa15@mc-redhat01 ~]$ mkdir -p /tmp/dirR/dirS
+[cs45aa15@mc-redhat01 ~]$ cd diry
+[cs45aa15@mc-redhat01 diry]$ dc tmp
+dc: Will not attempt to process directory tmp
+[cs45aa15@mc-redhat01 diry]$ cd tmp
+[cs45aa15@mc-redhat01 tmp]$ cd dirR
+-bash: cd: dirR: No such file or directory
+[cs45aa15@mc-redhat01 tmp]$ ls
+hcampbell-tester
+
+An error message isn’t thrown even though the directory hasn’t been made
+.
+Number 26 -rm
+
+[cs45aa15@mc-redhat01 diry]$ rm tmp/hcampbell-tester/
+rm: cannot remove ‘tmp/hcampbell-tester/’: Is a directory
+
+
+Number 27 - rm
+[cs45aa15@mc-redhat01 tmp]$ rm tmp/hcampbell-tester/
+rm: cannot remove ‘tmp/hcampbell-tester/’: No such file or directory
+
+Number 28 -  rm -r
+[cs45aa15@mc-redhat01 diry]$ rm -r tmp/hcampbell-tester/
+[cs45aa15@mc-redhat01 diry]$ ls tmp/hcampbell-tester/
+ls: cannot access tmp/hcampbell-tester/: No such file or directory
+
+Number 29 - rm -r
+
+[cs45aa15@mc-redhat01 diry]$ touch Afile Bfile Cfile
+[cs45aa15@mc-redhat01 diry]$ ls
+Afile  Bfile  Cfile  tmp
+[cs45aa15@mc-redhat01 diry]$ rm -r Afile
+[cs45aa15@mc-redhat01 diry]$ ls
+Bfile  Cfile  tmp
+[cs45aa15@mc-redhat01 diry]$ rm -r Bfile
+[cs45aa15@mc-redhat01 diry]$ ls
+Cfile  tmp
+[cs45aa15@mc-redhat01 diry]$ rm -r Cfile
+[cs45aa15@mc-redhat01 diry]$ ls
+tmp
+
+
+
+
