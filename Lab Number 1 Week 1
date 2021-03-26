@@ -1,0 +1,377 @@
+# Lab Number 1 Week 1
+Number 1 - Login 
+ajaybodla@ajays-air ~ % ssh cs45aa15@209.129.148.10
+cs45aa15@209.129.148.10's password: 
+Last login: Thu Feb 11 21:22:17 2021 from c-73-222-250-13.hsd1.ca.comcast.net
+
+Number 2 - ID
+[cs45aa15@mc-redhat01 ~]$ id
+uid=1015(cs45aa15) gid=1015(cs45aa15) groups=1015(cs45aa15) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+
+Number 3 - id -r vs id -u
+[cs45aa15@mc-redhat01 ~]$ id -r
+id: cannot print only names or real IDs in default format
+[cs45aa15@mc-redhat01 ~]$ id -u
+1015
+
+id - r prints the real id instead of numbers while id -u only prints the effective user ID
+
+Number 4 - who
+[cs45aa15@mc-redhat01 ~]$ who
+ply      :0           2021-01-30 06:52 (:0)
+cs45aa24 pts/1        2021-02-11 22:59 (45-23-139-0.lightspeed.sntcca.sbcglobal.net)
+cs45aa26 pts/2        2021-02-11 18:50 (c-71-204-169-222.hsd1.ca.comcast.net)
+cs45aa32 pts/3        2021-02-11 23:14 (c-73-158-55-75.hsd1.ca.comcast.net)
+cs45aa24 pts/4        2021-02-11 23:27 (45-23-139-0.lightspeed.sntcca.sbcglobal.net)
+cs45aa15 pts/5        2021-02-11 23:27 (c-73-222-250-13.hsd1.ca.comcast.net)
+ply      pts/0        2021-01-30 06:52 (:0)
+
+Number 5 - tty
+[cs45aa15@mc-redhat01 ~]$ tty
+/dev/pts/5
+
+Number 6 - w
+[cs45aa15@mc-redhat01 ~]$ w
+ 23:34:20 up 13 days,  9:39, 10 users,  load average: 0.00, 0.03, 0.05
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+ply      :0       :0               30Jan21 ?xdm?   1:48m  3.12s /usr/libexec/gnome-session-binary --session gnome-classic
+cs45aa24 pts/1    45-23-139-0.ligh 22:59   15:00   0.05s  0.00s less -s
+cs45aa26 pts/2    c-71-204-169-222 18:50    3:29m  0.05s  0.05s -bash
+cs45aa32 pts/3    c-73-158-55-75.h 23:14   44.00s  0.05s  0.05s -bash
+cs45aa24 pts/4    45-23-139-0.ligh 23:27   12.00s  0.05s  0.05s -bash
+cs45aa15 pts/5    c-73-222-250-13. 23:27    4.00s  0.07s  0.03s w
+ply      pts/0    :0               30Jan21 12days  0.15s  1.22s /usr/libexec/gnome-terminal-server
+
+Number 7 - man w
+[cs45aa15@mc-redhat01 ~]$ man w
+Shows man page for w command
+
+Number 8 - info man
+[cs45aa15@mc-redhat01 ~]$ info man
+Shows info page for man
+
+Number 9 - hostname
+[cs45aa15@mc-redhat01 ~]$ hostname
+mc-redhat01
+
+
+Number 10 - hostname--help
+[cs45aa15@mc-redhat01 ~]$ hostname --help
+Usage: hostname [-b] {hostname|-F file}         set host name (from file)
+       hostname [-a|-A|-d|-f|-i|-I|-s|-y]       display formatted name
+       hostname                                 display host name
+
+       {yp,nis,}domainname {nisdomain|-F file}  set NIS domain name (from file)
+       {yp,nis,}domainname                      display NIS domain name
+
+       dnsdomainname                            display dns domain name
+
+       hostname -V|--version|-h|--help          print info and exit
+
+Program name:
+       {yp,nis,}domainname=hostname -y
+       dnsdomainname=hostname -d
+
+Program options:
+    -a, --alias            alias names
+    -A, --all-fqdns        all long host names (FQDNs)
+    -b, --boot             set default hostname if none available
+    -d, --domain           DNS domain name
+    -f, --fqdn, --long     long host name (FQDN)
+    -F, --file             read host name or NIS domain name from given file
+    -i, --ip-address       addresses for the host name
+    -I, --all-ip-addresses all addresses for the host
+    -s, --short            short host name
+    -y, --yp, --nis        NIS/YP domain name
+
+Description:
+   This command can get or set the host name or the NIS domain name. You can
+   also get the DNS domain or the FQDN (fully qualified domain name).
+   Unless you are using bind or NIS for host lookups you can change the
+   FQDN (Fully Qualified Domain Name) and the DNS domain name (which is
+   part of the FQDN) in the /etc/hosts file.
+
+> hostname -i
+> Long hostname
+
+Number 11 - man-k printf
+[cs45aa15@mc-redhat01 ~]$ man -k printf
+asprintf (3)         - print to allocated string
+dprintf (3)          - print to a file descriptor
+fprintf (3)          - formatted output conversion
+fprintf (3p)         - print formatted output
+fwprintf (3)         - formatted wide-character output conversion
+fwprintf (3p)        - print formatted wide-character output
+ldns_buffer_printf (3) - (unknown subject)
+printf (1)           - format and print data
+printf (1p)          - write formatted output
+printf (3)           - formatted output conversion
+printf (3p)          - print formatted output
+snprintf (3)         - formatted output conversion
+snprintf (3p)        - print formatted output
+sprintf (3)          - formatted output conversion
+sprintf (3p)         - print formatted output
+swprintf (3)         - formatted wide-character output conversion
+swprintf (3p)        - print formatted wide-character output
+vasprintf (3)        - print to allocated string
+vdprintf (3)         - print to a file descriptor
+vfprintf (3)         - formatted output conversion
+vfprintf (3p)        - format output of a stdarg argument list
+vfwprintf (3)        - formatted wide-character output conversion
+vfwprintf (3p)       - wide-character formatted output of a stdarg argument list
+vprintf (3)          - formatted output conversion
+vprintf (3p)         - format output of a stdarg argument list
+vsnprintf (3)        - formatted output conversion
+vsnprintf (3p)       - format output of a stdarg argument list
+vsprintf (3)         - formatted output conversion
+vsprintf (3p)        - format output of a stdarg argument list
+vswprintf (3)        - formatted wide-character output conversion
+vswprintf (3p)       - wide-character formatted output of a stdarg argument list
+vwprintf (3)         - formatted wide-character output conversion
+vwprintf (3p)        - wide-character formatted output of a stdarg argument list
+wprintf (3)          - formatted wide-character output conversion
+wprintf (3p)         - print formatted wide-character output
+
+> It takes us to the printf man page
+
+Number 12 - curl
+[cs45aa15@mc-redhat01 ~]$ man curl
+
+> curl is a tool to transfer data from data from or to a server.
+> It is used to transfer data from a server or to a server. For example user authentication uses curl.
+
+Number 13 - wget
+[cs45aa15@mc-redhat01 ~]$ man wget
+
+> wget is a non interactive network downloader.
+> wget is a after utility for non interactive download of files from the web
+
+Number 14 - echo $0
+[cs45aa15@mc-redhat01 ~]$ echo $0
+-bash
+
+ Number 15 - echo $SHELL
+[cs45aa15@mc-redhat01 ~]$ echo $SHELL
+/bin/bash
+
+Number 16 - echo $PATH
+[cs45aa15@mc-redhat01 ~]$ echo $PATH
+/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cs45aa15/.local/bin:/home/cs45aa15/bin
+
+Number 17 - pizza
+[cs45aa15@mc-redhat01 ~]$ pizza
+bash: pizza: command not found...
+
+Number 18 - su - mr-tester
+[cs45aa15@mc-redhat01 ~]$ su - mr-tester
+Password: 
+su: Authentication failure
+[cs45aa15@mc-redhat01 ~]$ su - mr-tester
+Password: 
+Last login: Fri Feb 12 19:02:25 EST 2021 on pts/3
+Last failed login: Fri Feb 12 20:21:26 EST 2021 on pts/4
+There were 6 failed login attempts since the last successful login.
+[mr-tester@mc-redhat01 ~]$ pwd
+/home/mr-tester
+[mr-tester@mc-redhat01 ~]$ whoami
+mr-tester
+[mr-tester@mc-redhat01 ~]$ who am i
+cs45aa15 pts/4        2021-02-12 19:41 (c-73-222-250-13.hsd1.ca.comcast.net)
+[mr-tester@mc-redhat01 ~]$ exit
+logout
+[cs45aa15@mc-redhat01 ~]$ whoami
+cs45aa15
+
+> The difference between whoami and who am i are that whoami only gives the username while who am i gives the pts, time, ip address, and provider
+
+Number 19 - su mr-tester
+[cs45aa15@mc-redhat01 ~]$ whoami
+cs45aa15
+[cs45aa15@mc-redhat01 ~]$ su  mr-tester
+Password: 
+[mr-tester@mc-redhat01 cs45aa15]$ whoami
+mr-tester
+[mr-tester@mc-redhat01 cs45aa15]$ who am i
+cs45aa15 pts/4        2021-02-12 19:41 (c-73-222-250-13.hsd1.ca.comcast.net)
+ 
+Number 20 - last
+[cs45aa15@mc-redhat01 ~]$ last
+cs45aa16 pts/9        23-124-109-174.l Fri Feb 12 20:48   still logged in   
+cs45aa25 pts/8        c-24-4-38-158.hs Fri Feb 12 20:38   still logged in   
+cs45aa17 pts/7        75-37-198-64.lig Fri Feb 12 20:36   still logged in   
+cs45aa01 pts/2        99-36-165-99.lig Fri Feb 12 20:23   still logged in   
+cs45aa24 pts/6                         Fri Feb 12 19:44   still logged in   
+cs45aa24 pts/5        57.68.208.33     Fri Feb 12 19:42   still logged in   
+cs45aa15 pts/4        c-73-222-250-13. Fri Feb 12 19:41   still logged in   
+cs45aa07 pts/3        c-73-170-131-191 Fri Feb 12 19:32   still logged in   
+cs45aa03 pts/3        c-73-71-247-94.h Fri Feb 12 18:58 - 19:08  (00:10)    
+cs45aa20 pts/2        c-174-62-74-254. Fri Feb 12 18:28 - 20:09  (01:41)    
+cs45aa32 pts/3                         Fri Feb 12 17:04 - 17:05  (00:00)    
+cs45aa32 pts/1        c-73-158-55-75.h Fri Feb 12 16:42   still logged in 
+...
+
+[cs45aa15@mc-redhat01 ~]$ last mr-tester
+mr-teste pts/4                         Thu Feb 11 00:12 - 00:13  (00:00)    
+mr-teste pts/3                         Sat Feb  6 21:29 - 01:14  (03:44)    
+
+> User cs45aa04 was logged on for 9 hours and 15 minutes on February 8
+
+Number 21 - pinky
+[cs45aa15@mc-redhat01 ~]$ pinky hcampbell
+Login    Name                 TTY      Idle   When             Where
+
+[cs45aa15@mc-redhat01 ~]$ pinky -l  hcampbell
+Login name: hcampbell                   In real life:  
+Directory: /home/hcampbell              Shell:  /bin/bash
+
+
+Number 22- cal
+[cs45aa15@mc-redhat01 ~]$ cal
+
+[cs45aa15@mc-redhat01 ~]$ cal 2020
+
+
+[cs45aa15@mc-redhat01 ~]$ cal 1999
+
+[cs45aa15@mc-redhat01 ~]$ cal 10 2025
+
+Number 23 - date
+[cs45aa15@mc-redhat01 ~]$ date
+Fri Feb 12 21:03:14 EST 2021
+
+Number 24 - pwd & dir 
+[cs45aa15@mc-redhat01 ~]$ pwd
+/home/cs45aa15
+[cs45aa15@mc-redhat01 ~]$ dir
+1015	  cs45aa15		 cs45aa24  cs45aa32  id:   ply	 return  times	USER
+23:34:20  [cs45aa15@mc-redhat01  cs45aa26  folder    Last  popd  source  true
+
+Number 25 - pwd & cd & ls
+[cs45aa15@mc-redhat01 tmp]$ cd /tmp; ls -a; pwd; date
+.
+..
+.esd-1000
+.font-unix
+.ICE-unix
+ssh-OvPPV7nW16BG
+systemd-private-fec502a6b9904027a522561f4521303d-bolt.service-tak4di
+systemd-private-fec502a6b9904027a522561f4521303d-chronyd.service-1UkWBX
+systemd-private-fec502a6b9904027a522561f4521303d-colord.service-ZNXfHP
+systemd-private-fec502a6b9904027a522561f4521303d-cups.service-trYkC0
+systemd-private-fec502a6b9904027a522561f4521303d-fwupd.service-zs8IsP
+systemd-private-fec502a6b9904027a522561f4521303d-rtkit-daemon.service-DLJ8yU
+.Test-unix
+.X0-lock
+.X11-unix
+.XIM-unix
+yum_save_tx.2021-02-03.06-56.gWIkxk.yumtx
+yum_save_tx.2021-02-04.06-56.ICh_uK.yumtx
+yum_save_tx.2021-02-05.06-53.ND98QB.yumtx
+yum_save_tx.2021-02-06.06-53.J6L2YC.yumtx
+yum_save_tx.2021-02-07.06-53.fwIQVY.yumtx
+yum_save_tx.2021-02-08.06-53.nqZFoe.yumtx
+yum_save_tx.2021-02-09.06-56.XWnPCZ.yumtx
+yum_save_tx.2021-02-10.06-53.6mHx9k.yumtx
+yum_save_tx.2021-02-11.06-53.gTsN1P.yumtx
+yum_save_tx.2021-02-12.06-53.pWj8pR.yumtx
+/tmp
+Fri Feb 12 21:08:44 EST 2021
+
+Number 26 - cd
+> The dash gives the shell that I am using
+> The 2 dots takes me to the folder my folder was in
+> It shows the dot files too.
+
+Number 27 - free
+[cs45aa15@mc-redhat01 ~]$ free
+              total        used        free      shared  buff/cache   available
+Mem:        5944904     1051036      196004      334308     4697864     4261784
+Swap:       6160380       57344     6103036
+[cs45aa15@mc-redhat01 ~]$ free -h
+              total        used        free      shared  buff/cache   available
+Mem:           5.7G        1.0G        191M        326M        4.5G        4.1G
+Swap:          5.9G         56M        5.8G
+[cs45aa15@mc-redhat01 ~]$ free --help ; man free
+
+Usage:
+ free [options]
+
+Options:
+ -b, --bytes         show output in bytes
+ -k, --kilo          show output in kilobytes
+ -m, --mega          show output in megabytes
+ -g, --giga          show output in gigabytes
+     --tera          show output in terabytes
+     --peta          show output in petabytes
+ -h, --human         show human-readable output
+     --si            use powers of 1000 not 1024
+ -l, --lohi          show detailed low and high memory statistics
+ -t, --total         show total for RAM + swap
+ -s N, --seconds N   repeat printing every N seconds
+ -c N, --count N     repeat printing N times, then exit
+ -w, --wide          wide output
+
+     --help     display this help and exit
+ -V, --version  output version information and exit
+
+For more details see free(1).
+
+Number 28 - type
+[cs45aa15@mc-redhat01 ~]$ type ls
+ls is aliased to `ls --color=auto'
+[cs45aa15@mc-redhat01 ~]$ type pwd
+pwd is a shell builtin
+[cs45aa15@mc-redhat01 ~]$ type date
+date is /usr/bin/date
+
+Number 29 - df
+[cs45aa15@mc-redhat01 tmp]$ df -h
+Filesystem             Size  Used Avail Use% Mounted on
+devtmpfs               2.9G     0  2.9G   0% /dev
+tmpfs                  2.9G     0  2.9G   0% /dev/shm
+tmpfs                  2.9G  315M  2.6G  11% /run
+tmpfs                  2.9G     0  2.9G   0% /sys/fs/cgroup
+/dev/mapper/rhel-root   50G   11G   40G  22% /
+/dev/mapper/rhel-home  243G   66M  243G   1% /home
+/dev/sda1             1014M  236M  779M  24% /boot
+tmpfs                  581M   40K  581M   1% /run/user/1000
+tmpfs                  581M     0  581M   0% /run/user/1032
+tmpfs                  581M     0  581M   0% /run/user/1015
+tmpfs                  581M     0  581M   0% /run/user/1001
+tmpfs                  581M     0  581M   0% /run/user/1017
+tmpfs                  581M     0  581M   0% /run/user/1025
+tmpfs                  581M     0  581M   0% /run/user/1016
+tmpfs                  581M     0  581M   0% /run/user/1007
+tmpfs                  581M     0  581M   0% /run/user/1020
+[cs45aa15@mc-redhat01 tmp]$ df -hT
+Filesystem            Type      Size  Used Avail Use% Mounted on
+devtmpfs              devtmpfs  2.9G     0  2.9G   0% /dev
+tmpfs                 tmpfs     2.9G     0  2.9G   0% /dev/shm
+tmpfs                 tmpfs     2.9G  315M  2.6G  11% /run
+tmpfs                 tmpfs     2.9G     0  2.9G   0% /sys/fs/cgroup
+/dev/mapper/rhel-root xfs        50G   11G   40G  22% /
+/dev/mapper/rhel-home xfs       243G   66M  243G   1% /home
+/dev/sda1             xfs      1014M  236M  779M  24% /boot
+tmpfs                 tmpfs     581M   40K  581M   1% /run/user/1000
+tmpfs                 tmpfs     581M     0  581M   0% /run/user/1032
+tmpfs                 tmpfs     581M     0  581M   0% /run/user/1015
+tmpfs                 tmpfs     581M     0  581M   0% /run/user/1001
+tmpfs                 tmpfs     581M     0  581M   0% /run/user/1017
+tmpfs                 tmpfs     581M     0  581M   0% /run/user/1025
+tmpfs                 tmpfs     581M     0  581M   0% /run/user/1016
+tmpfs                 tmpfs     581M     0  581M   0% /run/user/1007
+tmpfs                 tmpfs     581M     0  581M   0% /run/user/1020
+
+Number 30 - du 
+[cs45aa15@mc-redhat01 tmp]$ du
+[cs45aa15@mc-redhat01 tmp]$ du -sh .
+[cs45aa15@mc-redhat01 tmp]$ du -sh *
+[cs45aa15@mc-redhat01 tmp]$ du -a
+[cs45aa15@mc-redhat01 tmp]$ du  -sh /home
+[cs45aa15@mc-redhat01 tmp]$ du -shS / home
+
+>3.2 M
+
+
+
+
